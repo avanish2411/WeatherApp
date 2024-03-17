@@ -60,7 +60,7 @@ export default function HomeScreen(props) {
                             placeholderTextColor='black'
                             value={city}
                             onChangeText={(val) => setCity(val)}
-                            style={{ paddingHorizontal: 5, color: 'black', fontSize: 16, fontWeight: '600' }}
+                            style={{ paddingHorizontal: 5, color: 'black', fontSize: 16, fontWeight: '600' ,flex:1}}
                         />
                         <Search name="search" size={20} color='black' onPress={handleSearch} />
                     </TouchableOpacity>
