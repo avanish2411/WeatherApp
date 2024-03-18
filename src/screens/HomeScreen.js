@@ -13,17 +13,22 @@ export default function HomeScreen(props) {
     const inputRef = useRef(null);
 
     const handleSearch = () => {
-        if (city.trim() !== '') {
-            props.navigation.navigate("Details", { name: city });
-            setCity('');
-            Keyboard.dismiss();
+        if (city && city.trim() !== '') {
+            const isValidCity = cities.some(item => item.cname.toLowerCase() === city.toLowerCase());
+            if (isValidCity) {
+                props.navigation.navigate("Details", { name: city });
+                setCity('');
+                Keyboard.dismiss();
+            } else {
+                Alert.alert('Warning', 'Please enter a valid city name.');
+                Keyboard.dismiss();
+            }
         } else {
-            // Show warning if the TextInput is empty
             Alert.alert('Warning', 'Please enter a city name.');
             Keyboard.dismiss();
         }
     };
-
+    
     const focusOnInput = () => {
         inputRef.current.focus();
     };
